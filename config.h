@@ -40,7 +40,8 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+//static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+static const char *tags[] = { "\uf120", "\uf7ae", "\uf121", "\uf04b", "\ue62e", "\uf251", "\ue727", "\uf537", "\uf684" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -49,6 +50,9 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "Android Emulator", NULL,       NULL,       0,            1,           -1 },
+	{ "Emulator", NULL,       NULL,       0,            1,           -1 },
+	{ "quemu-system-i386", NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
@@ -80,7 +84,6 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = { "rofi", "-combi-modi", "window,drun,run,ssh", "-show", "combi", "-modi", "combi", NULL };
 static const char *termcmd[]  = { "st", "-e", "tmux", NULL };
-static const char *browsercmd[]  = { "firefox", NULL };
 
 static const char *upvol[]   = { "/home/cycleke/scripts/vol-up.sh",  NULL };
 static const char *downvol[] = { "/home/cycleke/scripts/vol-down.sh",  NULL };
@@ -91,11 +94,12 @@ static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
 static const char *suspendcmd[]  = { "/home/cycleke/scripts/suspend.sh", NULL };
 
+static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
+
 static Key keys[] = {
 	/* modifier            key                      function        argument */
 	{ MODKEY,              XK_d,                    spawn,          {.v = roficmd } },
 	{ MODKEY,              XK_Return,               spawn,          {.v = termcmd } },
-	{ MODKEY,              XK_b,                    spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,    XK_p,                    spawn,          {.v = suspendcmd } },
 	{ MODKEY|ControlMask,  XK_s,                    spawn,          {.v = sktogglecmd } },
 	{ 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },
@@ -104,16 +108,24 @@ static Key keys[] = {
 	{ MODKEY,              XK_bracketleft,          spawn,          {.v = downvol } },
 	{ MODKEY,              XK_bracketright,         spawn,          {.v = upvol   } },
 	{ MODKEY,              XK_backslash,            spawn,          {.v = mutevol } },
-	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
-	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
-	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
-	{ MODKEY|ShiftMask,    XK_h,                    incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,    XK_l,                    incnmaster,     {.i = -1 } },
-	{ MODKEY,              XK_h,                    setmfact,       {.f = -0.05} },
-	{ MODKEY,              XK_l,                    setmfact,       {.f = +0.05} },
-	{ MODKEY,              XK_n,                    hidewin,        {0} },
-	{ MODKEY|ShiftMask,    XK_n,                    restorewin,     {0} },
+	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
+	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
+	{ MODKEY|ShiftMask,    XK_e,                    rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,    XK_u,                    rotatestack,    {.i = -1 } },
+	{ MODKEY,              XK_e,                    focusstack,     {.i = +1 } },
+	{ MODKEY,              XK_u,                    focusstack,     {.i = -1 } },
+	{ MODKEY,              XK_n,                    viewtoleft,     {0} },
+	{ MODKEY,              XK_i,                    viewtoright,    {0} },
+	{ MODKEY|ShiftMask,    XK_n,                    tagtoleft,      {0} },
+	{ MODKEY|ShiftMask,    XK_i,                    tagtoright,     {0} },
+	{ MODKEY|ShiftMask,    XK_j,                    incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,    XK_k,                    incnmaster,     {.i = -1 } },
+	{ MODKEY,              XK_j,                    setmfact,       {.f = -0.05} },
+	{ MODKEY,              XK_k,                    setmfact,       {.f = +0.05} },
+	{ MODKEY,              XK_h,                    hidewin,        {0} },
+	{ MODKEY|ShiftMask,    XK_h,                    restorewin,     {0} },
+	{ MODKEY,              XK_o,                    hideotherwins,  {0}},
+	{ MODKEY|ShiftMask,    XK_o,                    restoreotherwins, {0}},
 	{ MODKEY|ShiftMask,    XK_Return,               zoom,           {0} },
 	{ MODKEY,              XK_Tab,                  view,           {0} },
 	{ MODKEY|ShiftMask,    XK_q,                    killclient,     {0} },
