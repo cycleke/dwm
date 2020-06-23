@@ -89,9 +89,11 @@ static const char *upvol[]   = { "/home/cycleke/scripts/vol-up.sh",  NULL };
 static const char *downvol[] = { "/home/cycleke/scripts/vol-down.sh",  NULL };
 static const char *mutevol[] = { "/home/cycleke/scripts/vol-toggle.sh",  NULL };
 
+static const char *wpcmd[]  = { "/home/cycleke/scripts/wp-change.sh", NULL };
 static const char *sktogglecmd[]  = { "/home/cycleke/scripts/sck-tog.sh", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
+
 static const char *suspendcmd[]  = { "/home/cycleke/scripts/suspend.sh", NULL };
 
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
