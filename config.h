@@ -9,29 +9,47 @@ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows sel
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
-static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 6;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 6;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 6;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 6;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
-static const char *fonts[]          = { "InconsolataGo QiHei NF:size=10", "SF Mono:size=10", "Source Han Sans CN:size=10" };
-static const char dmenufont[]       = "SF Mono:size=16";
+static const char *fonts[]          = { "FiraCode QiHei NF:size=7" };
+static const char dmenufont[]       = "SF Mono:size=7";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#ffffff";
-static const char col_cyan[]        = "#37474F";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#005577";
 static const char col_border[]        = "#42A5F5";
+
+/* solarized colors http://ethanschoonover.com/solarized */
+static const char s_base03[]        = "#002b36";
+static const char s_base02[]        = "#073642";
+static const char s_base01[]        = "#586e75";
+static const char s_base00[]        = "#657b83";
+static const char s_base0[]         = "#839496";
+static const char s_base1[]         = "#93a1a1";
+static const char s_base2[]         = "#eee8d5";
+static const char s_base3[]         = "#fdf6e3";
+
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_border  },
-	[SchemeHid]  = { col_cyan,  col_gray1, col_border  },
+static const char *colors[][3] = {
+    /*               fg         bg         border   */
+  /* orig */
+    /* [SchemeNorm] = {col_gray3, col_gray1, col_gray2}, */
+    /* [SchemeSel] = {col_gray4, col_cyan, col_border}, */
+    [SchemeHid] = {col_cyan, col_gray1, col_border},
+    /* dark */
+    /* [SchemeNorm] = {s_base0, s_base03, s_base2}, */
+    /* [SchemeSel] = {s_base0, s_base02, s_base2}, */
+    /* light */
+    [SchemeNorm] { s_base00, s_base3, s_base02 },
+    [SchemeSel] { s_base00, s_base2, s_base02 }
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
@@ -50,10 +68,6 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Android Emulator", NULL,       NULL,       0,            1,           -1 },
-	{ "Emulator", NULL,       NULL,       0,            1,           -1 },
-	{ "quemu-system-i386", NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
