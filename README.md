@@ -24,7 +24,7 @@ necessary as root):
 Patches applied
 ---------------
 - [dwm-alpha-20180613-b69c870.diff](https://dwm.suckless.org/patches/alpha/)
-- [dwm-autostart-20161205-bb3bd6f.diff](https://dwm.suckless.org/patches/autostart/)
+- [dwm-autostart-20200610-cb3f58a.diff](https://dwm.suckless.org/patches/autostart/)
 - [dwm-awesomebar-20191003-80e2a76.diff](https://dwm.suckless.org/patches/awesomebar/)
 - [dwm-fullscreen-6.2.diff](https://dwm.suckless.org/patches/fullscreen/)
 - [dwm-hide-and-restore.diff](https://github.com/theniceboy/dwm-hide-and-restore-win.diff) (a custom patch I wrote)
