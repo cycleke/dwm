@@ -17,7 +17,7 @@ static const int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
-static const char *fonts[]          = { "FiraCode QiHei NF:size=9" };
+static const char *fonts[]          = { "FiraCode QiHei NF:size=10" };
 static const char dmenufont[]       = "SF Mono:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -74,7 +74,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -109,6 +109,7 @@ static const char *sktogglecmd[]  = { "/home/cycleke/scripts/sck-tog.sh", NULL }
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
 
+static const char *lockcmd[] = { "/home/cycleke/scripts/lock.sh", NULL };
 static const char *suspendcmd[]  = { "/home/cycleke/scripts/suspend.sh", NULL };
 
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
@@ -117,6 +118,7 @@ static Key keys[] = {
 	/* modifier            key                      function        argument */
 	{ MODKEY,              XK_d,                    spawn,          {.v = roficmd } },
 	{ MODKEY,              XK_Return,               spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,    XK_l,                    spawn,          {.v = lockcmd } },
 	{ MODKEY|ShiftMask,    XK_p,                    spawn,          {.v = suspendcmd } },
 	{ MODKEY|ControlMask,  XK_s,                    spawn,          {.v = sktogglecmd } },
 	{ 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },
