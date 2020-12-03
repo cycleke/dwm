@@ -39,17 +39,17 @@ static const char s_base3[]         = "#fdf6e3";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3] = {
-    /*               fg         bg         border   */
+  /*               fg         bg         border   */
   /* orig */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_cyan, col_border},
-    [SchemeHid] = {col_cyan, col_gray1, col_border},
-    /* dark */
-    /* [SchemeNorm] = {s_base0, s_base03, s_base2}, */
-    /* [SchemeSel] = {s_base0, s_base02, s_base2}, */
-    /* light */
-    /* [SchemeNorm] { s_base00, s_base3, s_base02 }, */
-    /* [SchemeSel] { s_base00, s_base2, s_base02 } */
+  [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
+  [SchemeSel] = {col_gray4, col_cyan, col_border},
+  [SchemeHid] = {col_cyan, col_gray1, col_border},
+  /* dark */
+  /* [SchemeNorm] = {s_base0, s_base03, s_base2}, */
+  /* [SchemeSel] = {s_base0, s_base02, s_base2}, */
+  /* light */
+  /* [SchemeNorm] { s_base00, s_base3, s_base02 }, */
+  /* [SchemeSel] { s_base00, s_base2, s_base02 } */
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
